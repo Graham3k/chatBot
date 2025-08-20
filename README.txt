@@ -1,0 +1,1 @@
+To use this app you need to add api_key file in resources folder with your API key.
