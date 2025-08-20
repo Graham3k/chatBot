@@ -20,8 +20,7 @@ public class WebSocketController {
 
     @MessageMapping("/message")
     @SendTo("/topic/reply")
-    public String chat(@Payload ChatMessage chatMessage)
-    {
+    public String chat(@Payload ChatMessage chatMessage) throws InterruptedException {
         if(chatMessage.getMessage() == null || chatMessage.getMessage().trim().isEmpty())
         {
             return "Empty prompt!";

@@ -1,15 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-    <title>ChatBot Test</title>
-    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+  <meta charset="UTF-8">
+  <title>ChatBot</title>
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .chatbox {
+      width: 400px;
+      max-width: 90%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 15px;
+      list-style: none;
+      margin: 0;
+      overflow-y: auto;
+      max-height: 300px;
+    }
+
+    .messages li {
+      margin: 8px 0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background: #0078ff;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .bot {
+      background: #eee;
+      align-self: flex-start;
+    }
+
+    .input-area {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      outline: none;
+    }
+
+    .input-area button {
+      padding: 12px 18px;
+      background: #0078ff;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .loader {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ccc;
+      border-top: 2px solid #0078ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 6px;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-    <input id="msg" type="text">
-    <button onclick="sendMessage()">Send</button>
-    <ul id="messages"></ul>
+  <h2>ChatBot</h2>
 
-    <script src="script.js"></script>
+  <div class="chatbox">
+    <ul class="messages" id="messages">
+    <li class="bot">How can I help you today?</li>
+    </ul>
+    <div class="input-area">
+      <input id="msg" type="text" placeholder="Message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
